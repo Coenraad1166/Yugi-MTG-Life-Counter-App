@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LifeCounter_App.MVVM.Views.YuGiHoPages.YuGiMetaList"
+             Title="YuGiMetaList">
+    <VerticalStackLayout BackgroundColor="white">
+        <Grid ColumnDefinitions="*,*,*" Padding="24,0,24,0" BackgroundColor="#171717" HeightRequest="40" ColumnSpacing="10">
+            <Button Text="Life Counter" BackgroundColor="Transparent" FontFamily="Racing" FontSize="14" TextColor="White" Clicked="TabItem_Clicked"/>
+            <Button Grid.Column="1" Text="Flip Coin" BackgroundColor="Transparent" FontFamily="Racing" FontSize="14" TextColor="White" Clicked="TabItem_Clicked"/>
+            <Button Grid.Column="2" Text="Meta List" BackgroundColor="Transparent" FontFamily="Racing" FontSize="14" TextColor="#d62323" Clicked="TabItem_Clicked"/>
+        </Grid>
+        <VerticalStackLayout Padding="24">
+            <Label Text="Meta List" FontFamily="Racing" FontSize="22" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="#171717"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout Padding="10" Spacing="0">
+            <Label Text="Tier 1" FontFamily="Racing" FontSize="28" TextColor="#171717" Padding="0,10,0,10"/>
+            <Button Text="Purrely" FontSize="16" TextColor="#D62323" Padding="0" Margin="0" HorizontalOptions="Start" Clicked="MetaItem_Clicked"/>
+            <Button Text="Dragon Link" FontSize="16" TextColor="#D62323" Padding="0" Margin="0" HorizontalOptions="Start" Clicked="MetaItem_Clicked"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout Padding="10" Spacing="0">
+            <Label Text="Tier 2" FontFamily="Racing" FontSize="28" TextColor="#171717" Padding="0,10,0,10"/>
+            <Button Text="Labrynth" FontSize="16" TextColor="#D62323" Padding="0" Margin="0" HorizontalOptions="Start" Clicked="MetaItem_Clicked"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout Padding="10" Spacing="0">
+            <Label Text="Tier 3" FontFamily="Racing" FontSize="28" TextColor="#171717" Padding="0,10,0,10"/>
+            <Button Text="MathMech" FontSize="16" TextColor="#D62323" Padding="0" Margin="0" HorizontalOptions="Start" Clicked="MetaItem_Clicked"/>
+            <Button Text="Kashtira" FontSize="16" TextColor="#D62323" Padding="0" Margin="0" HorizontalOptions="Start" Clicked="MetaItem_Clicked"/>
+            <Button Text="Vanquish Soul" FontSize="16" TextColor="#D62323" Padding="0" Margin="0" HorizontalOptions="Start" Clicked="MetaItem_Clicked"/>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

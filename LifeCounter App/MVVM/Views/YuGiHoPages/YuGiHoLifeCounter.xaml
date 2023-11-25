@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LifeCounter_App.MVVM.Views.YuGiHoPages.YuGiHoLifeCounter"
+             Title="YuGiHoLifeCounter"
+             x:Name="contentPage">
+    <Grid>
+
+
+        <Grid BackgroundColor="White" RowDefinitions="120,*" IsVisible="true">
+            <VerticalStackLayout Grid.Row="0">
+                <Grid ColumnDefinitions="*,*,*" Padding="24,0,24,0" BackgroundColor="#171717" HeightRequest="40" ColumnSpacing="10">
+                    <Button Text="Life Counter" BackgroundColor="Transparent" FontFamily="Racing" FontSize="14" TextColor="#d62323" Clicked="TabItem_Clicked"/>
+                    <Button Grid.Column="1" Text="Flip Coin" BackgroundColor="Transparent" FontFamily="Racing" FontSize="14" TextColor="white" Clicked="TabItem_Clicked"/>
+                    <Button Grid.Column="2" Text="Meta List" BackgroundColor="Transparent" FontFamily="Racing" FontSize="14" TextColor="White" Clicked="TabItem_Clicked" />
+                </Grid>
+                <Grid ColumnDefinitions="*,*" RowDefinitions="*,*" Padding="24" RowSpacing="-10">
+                    <Label Text="Yu-Gi-Oh!" FontSize="22" FontFamily="Racing" TextColor="#171717" VerticalTextAlignment="End" HorizontalOptions="Start"/>
+                    <Button Grid.Row="1" Text="Change Game" FontSize="12" FontFamily="Racing" TextColor="#d62323" VerticalOptions="Start" HorizontalOptions="Start" BackgroundColor="Transparent" Padding="0" Margin="0" Clicked="ChangeGameBtn_Clicked"/>
+                    <Label Text="Players" FontSize="14" FontFamily="Racing" TextColor="#171717" VerticalTextAlignment="End" HorizontalTextAlignment="End" Grid.Column="1" Padding="5"/>
+                    <HorizontalStackLayout Grid.Column="1" Grid.Row="1" Margin="0" Padding="0" HorizontalOptions="EndAndExpand" Spacing="10">
+                        <Button x:Name="btnTwoPlayers" HeightRequest="22" WidthRequest="22"  Text="2" FontSize="14" Margin="0,0,0,0" Padding="0,0,0,0" FontFamily="Racing"  TextColor="#d62323" BorderColor="#d62323" BorderWidth="1" CornerRadius="100" Clicked="ChangePlayerAmountBrn_Clicked" />
+                        <Button x:Name="btnFourPlayers" HeightRequest="22" WidthRequest="22"  Text="4" FontSize="14" Margin="0,0,0,0" Padding="0,0,0,0" FontFamily="Racing"  TextColor="#d4d4d4" BorderColor="#d4d4d4" BorderWidth="1" CornerRadius="100" Clicked="ChangePlayerAmountBrn_Clicked"/>
+                    </HorizontalStackLayout>
+                </Grid>
+                <!--#region 2 Player Grid-->
+            </VerticalStackLayout>
+            <Grid Grid.Row="1" RowDefinitions="*,*" Padding="10" RowSpacing="10" x:Name="twoPlayerGrid">
+                <!--#region Player One -->
+
+                <Frame Grid.Row="0" CornerRadius="10" Padding="0" BackgroundColor="black" ScaleY="-1" ScaleX="-1">
+                    <Image Source="yugiplayerone.jpg" Aspect="AspectFill" Opacity="0.5"/>
+                </Frame>
+                <VerticalStackLayout Padding="24" ScaleY="-1" ScaleX="-1" VerticalOptions="CenterAndExpand">
+                  
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="24">
+
+                        <Button Text="Plus" FontFamily="Racing" TextColor="White"  FontSize="14" BackgroundColor="#80171717"  Clicked="ManualUpdateBtn_Clicked" HorizontalOptions="End" BorderColor="White" BorderWidth="1" CornerRadius="200" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0"/>
+                        <Button Grid.Column="1" Text="Minus" FontFamily="Racing"  TextColor="White" FontSize="14" BackgroundColor="#80171717" Clicked="ManualUpdateBtn_Clicked" HorizontalOptions="Start" BorderColor="White" BorderWidth="1" CornerRadius="200" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0"/>
+                    </Grid>
+                    <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="*,*" Padding="24" RowSpacing="24" ColumnSpacing="8" HorizontalOptions="Start">
+                        <Label Text="{Binding PlayerOneLife}" FontSize="64" Grid.ColumnSpan="4" FontFamily="Racing" TextColor="White" HorizontalTextAlignment="Center"/>
+                        <Button Grid.Row="1"  Text="+100" FontFamily="Racing" TextColor="White" FontSize="14" Clicked="UpdateAdditionAndSubstractionBtn_Click" BackgroundColor="#80171717" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0" BorderColor="white" CornerRadius="200" BorderWidth="1" HorizontalOptions="Center"/>
+                        <Button Grid.Row="1" Grid.Column="1" Text="+10" FontFamily="Racing" TextColor="White" FontSize="14"  Clicked="UpdateAdditionAndSubstractionBtn_Click" BackgroundColor="#80171717" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0" BorderColor="white" CornerRadius="200" BorderWidth="1"/>
+
+
+
+                        <Button Grid.Row="1" Grid.Column="2" Text="-10" FontFamily="Racing" TextColor="White" FontSize="14"  Clicked="UpdateAdditionAndSubstractionBtn_Click" BackgroundColor="#80171717" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0" BorderColor="white" CornerRadius="200" BorderWidth="1"/>
+                        <Button Grid.Row="1" Grid.Column="3" Text="-100" FontFamily="Racing" TextColor="White" FontSize="14" Clicked="UpdateAdditionAndSubstractionBtn_Click" BackgroundColor="#80171717" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0" BorderColor="white" CornerRadius="200" BorderWidth="1"/>
+                    </Grid>
+                    <Button ImageSource="refresh.png" VerticalOptions="Start" HorizontalOptions="Center" Margin="0" BackgroundColor="Transparent" Clicked="ResetBtn_Clicked"/>
+                </VerticalStackLayout>
+                <!--#endregion-->
+                <!--#region Player Two -->
+
+                <Frame Grid.Row="1" CornerRadius="10" Padding="0" BackgroundColor="black" >
+                    <Image Source="yugiplayerTwo.jpg" Aspect="AspectFill" Opacity="0.5"/>
+                </Frame>
+                <VerticalStackLayout Grid.Row="1" Padding="24"  VerticalOptions="CenterAndExpand">
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="24">
+
+                        <Button Text="Plus" FontFamily="Racing" TextColor="White"  FontSize="14" BackgroundColor="#80171717"  Clicked="ManualUpdateBtn_Clicked" HorizontalOptions="End" BorderColor="White" BorderWidth="1" CornerRadius="200" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0"/>
+                        <Button Grid.Column="1" Text="Minus" FontFamily="Racing"  TextColor="White" FontSize="14" BackgroundColor="#80171717" Clicked="ManualUpdateBtn_Clicked" HorizontalOptions="Start" BorderColor="White" BorderWidth="1" CornerRadius="200" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0"/>
+                    </Grid>
+                    <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="*,*" Padding="24" RowSpacing="24" ColumnSpacing="8" HorizontalOptions="Start">
+                        <Label Text="{Binding PlayerTwoLife}" FontSize="64" Grid.ColumnSpan="4" FontFamily="Racing" TextColor="White" HorizontalTextAlignment="Center"/>
+                        <Button Grid.Row="1"  Text="+100" FontFamily="Racing" TextColor="White" FontSize="14" Clicked="UpdateAdditionAndSubstractionBtn_Click" BackgroundColor="#80171717" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0" BorderColor="white" CornerRadius="200" BorderWidth="1" HorizontalOptions="Center"/>
+                        <Button Grid.Row="1" Grid.Column="1" Text="+10" FontFamily="Racing" TextColor="White" FontSize="14"  Clicked="UpdateAdditionAndSubstractionBtn_Click" BackgroundColor="#80171717" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0" BorderColor="white" CornerRadius="200" BorderWidth="1"/>
+
+
+
+                        <Button Grid.Row="1" Grid.Column="2" Text="-10" FontFamily="Racing" TextColor="White" FontSize="14"  Clicked="UpdateAdditionAndSubstractionBtn_Click" BackgroundColor="#80171717" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0" BorderColor="white" CornerRadius="200" BorderWidth="1"/>
+                        <Button Grid.Row="1" Grid.Column="3" Text="-100" FontFamily="Racing" TextColor="White" FontSize="14" Clicked="UpdateAdditionAndSubstractionBtn_Click" BackgroundColor="#80171717" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0" BorderColor="white" CornerRadius="200" BorderWidth="1"/>
+                    </Grid>
+                    <Button ImageSource="refresh.png" VerticalOptions="Start" HorizontalOptions="Center" Margin="0" BackgroundColor="Transparent" Clicked="ResetBtn_Clicked"/>
+                </VerticalStackLayout>
+                <!--#endregion-->
+            </Grid>
+            <!--#region 4 Players -->
+
+            <Grid Grid.Row="1" RowDefinitions="*,*" ColumnDefinitions="*,*" ColumnSpacing="10" Padding="10" RowSpacing="10" x:Name="fourPlayerGrid" IsVisible="false">
+                <!--#region Player One -->
+                <Frame Grid.Row="0" Grid.Column="0" CornerRadius="10" Padding="0" BackgroundColor="black">
+                    <Image Source="yugiplayerone.jpg" Aspect="AspectFill" Opacity="0.5" Rotation="90"/>
+                </Frame>
+                <VerticalStackLayout Rotation="90" VerticalOptions="CenterAndExpand">
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="30">
+
+                        <Button Text="Plus" FontFamily="Racing" TextColor="White"  FontSize="14" BackgroundColor="#80171717"  Clicked="ManualUpdateBtn_Clicked" HorizontalOptions="End" BorderColor="White" BorderWidth="1" CornerRadius="200" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0"/>
+                        <Button Grid.Column="1" Text="Minus" FontFamily="Racing"  TextColor="White" FontSize="14" BackgroundColor="#80171717" Clicked="ManualUpdateBtn_Clicked" HorizontalOptions="Start" BorderColor="White" BorderWidth="1" CornerRadius="200" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0"/>
+                    </Grid>
+                    <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="*,*,*"  ColumnSpacing="65" HorizontalOptions="Start" RowSpacing="10">
+                        <Label Text="{Binding PlayerOneLife}" FontSize="32" Grid.ColumnSpan="4" FontFamily="Racing" TextColor="White" HorizontalTextAlignment="Center"/>
+                        <Button Grid.Row="1"  Text="+100" FontFamily="Racing" TextColor="White" FontSize="14" Clicked="UpdateAdditionAndSubstractionBtn_Click" BackgroundColor="#80171717" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0" BorderColor="white" CornerRadius="200" BorderWidth="1" HorizontalOptions="Center"/>
+                        <Button Grid.Row="1" Grid.Column="1" Text="+10" FontFamily="Racing" TextColor="White" FontSize="14"  Clicked="UpdateAdditionAndSubstractionBtn_Click" BackgroundColor="#80171717" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0" BorderColor="white" CornerRadius="200" BorderWidth="1"/>
+
+
+
+                        <Button Grid.Row="1" Grid.Column="2" Text="-10" FontFamily="Racing" TextColor="White" FontSize="14"  Clicked="UpdateAdditionAndSubstractionBtn_Click" BackgroundColor="#80171717" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0" BorderColor="white" CornerRadius="200" BorderWidth="1"/>
+                        <Button Grid.Row="1" Grid.Column="3" Text="-100" FontFamily="Racing" TextColor="White" FontSize="14" Clicked="UpdateAdditionAndSubstractionBtn_Click" BackgroundColor="#80171717" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0" BorderColor="white" CornerRadius="200" BorderWidth="1"/>
+                        
+                    </Grid>
+                    <Button Text="RESET" FontSize="16" FontFamily="Racing" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Transparent" Clicked="ResetBtn_Clicked"/>
+
+                </VerticalStackLayout>
+
+                <!--#endregion-->
+                <!--#region Player Two -->
+                <Frame Grid.Row="0" Grid.Column="1" CornerRadius="10" Padding="0" BackgroundColor="black">
+                    <Image Source="yugiplayertwo.jpg" Aspect="AspectFill" Opacity="0.5" Rotation="270"/>
+                </Frame>
+                <VerticalStackLayout Grid.Column="1" Rotation="270" VerticalOptions="CenterAndExpand">
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="30">
+
+                        <Button Text="Plus" FontFamily="Racing" TextColor="White"  FontSize="14" BackgroundColor="#80171717"  Clicked="ManualUpdateBtn_Clicked" HorizontalOptions="End" BorderColor="White" BorderWidth="1" CornerRadius="200" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0"/>
+                        <Button Grid.Column="1" Text="Minus" FontFamily="Racing"  TextColor="White" FontSize="14" BackgroundColor="#80171717" Clicked="ManualUpdateBtn_Clicked" HorizontalOptions="Start" BorderColor="White" BorderWidth="1" CornerRadius="200" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0"/>
+                    </Grid>
+                    <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="*,*,*"  ColumnSpacing="65" HorizontalOptions="Start" RowSpacing="10">
+                        <Label Text="{Binding PlayerOneLife}" FontSize="32" Grid.ColumnSpan="4" FontFamily="Racing" TextColor="White" HorizontalTextAlignment="Center"/>
+                        <Button Grid.Row="1"  Text="+100" FontFamily="Racing" TextColor="White" FontSize="14" Clicked="UpdateAdditionAndSubstractionBtn_Click" BackgroundColor="#80171717" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0" BorderColor="white" CornerRadius="200" BorderWidth="1" HorizontalOptions="Center"/>
+                        <Button Grid.Row="1" Grid.Column="1" Text="+10" FontFamily="Racing" TextColor="White" FontSize="14"  Clicked="UpdateAdditionAndSubstractionBtn_Click" BackgroundColor="#80171717" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0" BorderColor="white" CornerRadius="200" BorderWidth="1"/>
+
+
+
+                        <Button Grid.Row="1" Grid.Column="2" Text="-10" FontFamily="Racing" TextColor="White" FontSize="14"  Clicked="UpdateAdditionAndSubstractionBtn_Click" BackgroundColor="#80171717" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0" BorderColor="white" CornerRadius="200" BorderWidth="1"/>
+                        <Button Grid.Row="1" Grid.Column="3" Text="-100" FontFamily="Racing" TextColor="White" FontSize="14" Clicked="UpdateAdditionAndSubstractionBtn_Click" BackgroundColor="#80171717" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0" BorderColor="white" CornerRadius="200" BorderWidth="1"/>
+
+                    </Grid>
+                    <Button Text="RESET" FontSize="16" FontFamily="Racing" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Transparent" Clicked="ResetBtn_Clicked"/>
+
+                </VerticalStackLayout>
+
+                <!--#endregion-->
+                <!--#region Player Three -->
+                <Frame Grid.Row="1" Grid.Column="0" CornerRadius="10" Padding="0" BackgroundColor="black">
+                    <Image Source="yugiplayerthree.jpg" Aspect="AspectFill" Opacity="0.5" Rotation="90"/>
+                </Frame>
+                <VerticalStackLayout Grid.Row="1" Rotation="90" VerticalOptions="CenterAndExpand">
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="30">
+
+                        <Button Text="Plus" FontFamily="Racing" TextColor="White"  FontSize="14" BackgroundColor="#80171717"  Clicked="ManualUpdateBtn_Clicked" HorizontalOptions="End" BorderColor="White" BorderWidth="1" CornerRadius="200" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0"/>
+                        <Button Grid.Column="1" Text="Minus" FontFamily="Racing"  TextColor="White" FontSize="14" BackgroundColor="#80171717" Clicked="ManualUpdateBtn_Clicked" HorizontalOptions="Start" BorderColor="White" BorderWidth="1" CornerRadius="200" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0"/>
+                    </Grid>
+                    <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="*,*,*"  ColumnSpacing="65" HorizontalOptions="Start" RowSpacing="10">
+                        <Label Text="{Binding PlayerThreeLife}" FontSize="32" Grid.ColumnSpan="4" FontFamily="Racing" TextColor="White" HorizontalTextAlignment="Center"/>
+                        <Button Grid.Row="1"  Text="+100" FontFamily="Racing" TextColor="White" FontSize="14" Clicked="UpdateAdditionAndSubstractionBtn_Click" BackgroundColor="#80171717" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0" BorderColor="white" CornerRadius="200" BorderWidth="1" HorizontalOptions="Center"/>
+                        <Button Grid.Row="1" Grid.Column="1" Text="+10" FontFamily="Racing" TextColor="White" FontSize="14"  Clicked="UpdateAdditionAndSubstractionBtn_Click" BackgroundColor="#80171717" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0" BorderColor="white" CornerRadius="200" BorderWidth="1"/>
+
+
+
+                        <Button Grid.Row="1" Grid.Column="2" Text="-10" FontFamily="Racing" TextColor="White" FontSize="14"  Clicked="UpdateAdditionAndSubstractionBtn_Click" BackgroundColor="#80171717" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0" BorderColor="white" CornerRadius="200" BorderWidth="1"/>
+                        <Button Grid.Row="1" Grid.Column="3" Text="-100" FontFamily="Racing" TextColor="White" FontSize="14" Clicked="UpdateAdditionAndSubstractionBtn_Click" BackgroundColor="#80171717" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0" BorderColor="white" CornerRadius="200" BorderWidth="1"/>
+
+                    </Grid>
+                    <Button Text="RESET" FontSize="16" FontFamily="Racing" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Transparent" Clicked="ResetBtn_Clicked"/>
+
+                </VerticalStackLayout>
+
+                <!--#endregion-->
+                <!--#region Player four -->
+                <Frame Grid.Row="1" Grid.Column="1" CornerRadius="10" Padding="0" BackgroundColor="black">
+                    <Image Source="yugiplayerfour.png" Aspect="AspectFill" Opacity="0.5" Rotation="270"/>
+                </Frame>
+                <VerticalStackLayout Grid.Column="1" Grid.Row="1" Rotation="270" VerticalOptions="CenterAndExpand">
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="30">
+
+                        <Button Text="Plus" FontFamily="Racing" TextColor="White"  FontSize="14" BackgroundColor="#80171717"  Clicked="ManualUpdateBtn_Clicked" HorizontalOptions="End" BorderColor="White" BorderWidth="1" CornerRadius="200" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0"/>
+                        <Button Grid.Column="1" Text="Minus" FontFamily="Racing"  TextColor="White" FontSize="14" BackgroundColor="#80171717" Clicked="ManualUpdateBtn_Clicked" HorizontalOptions="Start" BorderColor="White" BorderWidth="1" CornerRadius="200" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0"/>
+                    </Grid>
+                    <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="*,*,*"  ColumnSpacing="65" HorizontalOptions="Start" RowSpacing="10">
+                        <Label Text="{Binding PlayerFourLife}" FontSize="32" Grid.ColumnSpan="4" FontFamily="Racing" TextColor="White" HorizontalTextAlignment="Center"/>
+                        <Button Grid.Row="1"  Text="+100" FontFamily="Racing" TextColor="White" FontSize="14" Clicked="UpdateAdditionAndSubstractionBtn_Click" BackgroundColor="#80171717" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0" BorderColor="white" CornerRadius="200" BorderWidth="1" HorizontalOptions="Center"/>
+                        <Button Grid.Row="1" Grid.Column="1" Text="+10" FontFamily="Racing" TextColor="White" FontSize="14"  Clicked="UpdateAdditionAndSubstractionBtn_Click" BackgroundColor="#80171717" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0" BorderColor="white" CornerRadius="200" BorderWidth="1"/>
+
+
+
+                        <Button Grid.Row="1" Grid.Column="2" Text="-10" FontFamily="Racing" TextColor="White" FontSize="14"  Clicked="UpdateAdditionAndSubstractionBtn_Click" BackgroundColor="#80171717" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0" BorderColor="white" CornerRadius="200" BorderWidth="1"/>
+                        <Button Grid.Row="1" Grid.Column="3" Text="-100" FontFamily="Racing" TextColor="White" FontSize="14" Clicked="UpdateAdditionAndSubstractionBtn_Click" BackgroundColor="#80171717" HeightRequest="26" WidthRequest="60" Padding="0" Margin="0" BorderColor="white" CornerRadius="200" BorderWidth="1"/>
+
+                    </Grid>
+                    <Button Text="RESET" FontSize="16" FontFamily="Racing" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Transparent" Clicked="ResetBtn_Clicked"/>
+
+                </VerticalStackLayout>
+
+                <!--#endregion-->
+            </Grid>
+            <!--#endregion-->
+        </Grid>
+
+
+    </Grid>
+</ContentPage>

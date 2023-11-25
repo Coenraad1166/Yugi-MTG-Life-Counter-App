@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LifeCounter_App.MVVM.Views.MTGArenaPages.RollDicePage"
+             Title="RollDicePage">
+    <VerticalStackLayout BackgroundColor="white">
+
+
+        <Grid ColumnDefinitions="*,*,*" Padding="24,0,24,0" BackgroundColor="#171717" HeightRequest="40" ColumnSpacing="10">
+            <Button Text="Life Counter" BackgroundColor="Transparent" FontFamily="Racing" FontSize="14" TextColor="white" Clicked="TabItem_Clicked"/>
+            <Button Grid.Column="1" Text="Roll Dice" BackgroundColor="Transparent" FontFamily="Racing" FontSize="14" TextColor="#d62323" Clicked="TabItem_Clicked"/>
+            <Button Grid.Column="2" Text="Meta List" BackgroundColor="Transparent" FontFamily="Racing" FontSize="14" TextColor="White" Clicked="TabItem_Clicked" />
+        </Grid>
+        <Grid ColumnDefinitions="*,*,*,*" HorizontalOptions="Center" Padding="24" ColumnSpacing="15">
+            <Label Text="Player 1" TextColor="#171717" FontSize="14" FontFamily="Racing" VerticalTextAlignment="Center" HorizontalOptions="Center"/>
+            <Frame Grid.Column="1" CornerRadius="100"  BorderColor="#d62323" BackgroundColor="Transparent" HeightRequest="26" WidthRequest="26" Padding="0" Margin="0">
+                <Label x:Name="playerOneRoll" Text="20" FontSize="14" FontFamily="Racing" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="#D62323" IsVisible="false"/>
+            </Frame>
+            <Label Text="Player 2" Grid.Column="2" TextColor="#171717" FontSize="14" FontFamily="Racing" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
+            <Frame Grid.Column="3" CornerRadius="100"  BorderColor="#d62323" BackgroundColor="Transparent" HeightRequest="26" WidthRequest="26" Padding="0" Margin="0">
+                <Label x:Name="playerTwoRoll" Text="20" FontSize="14" FontFamily="Racing" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="#D62323" IsVisible="false"/>
+            </Frame>
+           
+
+
+
+        </Grid>
+        <Grid Padding="10">
+        <Frame Padding="0" Margin="0" VerticalOptions="StartAndExpand" HeightRequest="550">
+            <Image Source="mtgplayertwo.jpg" Aspect="AspectFill"/>
+        </Frame>
+            <Label x:Name="rollResult" FontSize="92" Text="" FontFamily="Racing" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+        </Grid>
+        <Button x:Name="rollBtn" Text="Roll" FontSize="22" FontFamily="Racing" TextColor="#d62323" Margin="24" Clicked="Roll_Clicked"/>
+    </VerticalStackLayout>
+</ContentPage>

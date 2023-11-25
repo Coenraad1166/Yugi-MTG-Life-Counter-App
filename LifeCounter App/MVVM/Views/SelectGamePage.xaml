@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LifeCounter_App.MVVM.Views.SelectGamePage"
+             Title="SelectGamePage">
+    <Grid Padding="10" RowDefinitions="*,*" RowSpacing="10">
+        <Frame Grid.Row="0" CornerRadius="10" Padding="0">
+            <Image Source="yugibackground.jpg" Aspect="AspectFill" Opacity="0.9"/>
+        </Frame>
+        <VerticalStackLayout Grid.Row="0" VerticalOptions="End" Margin="0,0,0,15">
+            <Button Text="SELECT" FontSize="20" FontFamily="Racing" TextColor="White" VerticalOptions="End" HorizontalOptions="Center" BackgroundColor="Transparent" Clicked="YugiBtn_Clicked"/>
+        </VerticalStackLayout>
+        <Frame Grid.Row="1" CornerRadius="10" Padding="0">
+            <Image Source="mtgarenabackground.jpg" Aspect="AspectFill" Opacity="0.9"/>
+        </Frame>
+        <VerticalStackLayout Grid.Row="1" VerticalOptions="End" Margin="0,0,0,15">
+            <Button Text="SELECT" FontSize="20" FontFamily="Racing" TextColor="White" VerticalOptions="End" HorizontalOptions="Center" BackgroundColor="Transparent" Clicked="MTGBtn_Clicked"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

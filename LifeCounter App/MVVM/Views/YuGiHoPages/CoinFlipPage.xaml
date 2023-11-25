@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LifeCounter_App.MVVM.Views.YuGiHoPages.CoinFlipPage"
+             Title="CoinFlipPage">
+    <Grid RowDefinitions="50,*,*" BackgroundColor="white" x:Name="flipContainer">
+    <VerticalStackLayout BackgroundColor="white">
+        <Grid ColumnDefinitions="*,*,*" Padding="24,0,24,0" BackgroundColor="#171717" HeightRequest="40" ColumnSpacing="10">
+                <Button Text="Life Counter" BackgroundColor="Transparent" FontFamily="Racing" FontSize="14" TextColor="White" Clicked="TabItem_Clicked"/>
+                <Button Grid.Column="1" Text="Flip Coin" BackgroundColor="Transparent" FontFamily="Racing" FontSize="14" TextColor="#d62323" Clicked="TabItem_Clicked"/>
+                <Button Grid.Column="2" Text="Meta List" BackgroundColor="Transparent" FontFamily="Racing" FontSize="14" TextColor="White" Clicked="TabItem_Clicked"/>
+        </Grid>
+        <Grid  Grid.Row="1" RowDefinitions="*" Padding="24">
+            <Frame Grid.Row="0" CornerRadius="10" Padding="0" BackgroundColor="black" HeightRequest="600">
+                <Image Source="yugiplayerone.jpg" Aspect="AspectFill" Opacity="0.5"/>
+            </Frame>
+                <Grid Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup Name="CoinStates">
+                            <VisualState Name="Heads">
+                                <VisualState.Setters>
+                                    <Setter Property="IsVisible" TargetName="headsView" Value="True"/>
+                                    <Setter Property="IsVisible" TargetName="topView" Value="False"/>
+                                    <Setter Property="IsVisible" TargetName="tailsView" Value="False"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState Name="Tails">
+                                <VisualState.Setters>
+                                    <Setter Property="IsVisible" TargetName="headsView" Value="False"/>
+                                    <Setter Property="IsVisible" TargetName="topView" Value="False"/>
+                                    <Setter Property="IsVisible" TargetName="tailsView" Value="True"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState Name="Top">
+                                <VisualState.Setters>
+                                    <Setter Property="IsVisible" TargetName="headsView" Value="False"/>
+                                    <Setter Property="IsVisible" TargetName="topView" Value="True"/>
+                                    <Setter Property="IsVisible" TargetName="tailsView" Value="False"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                    <Image x:Name="tailsView" Source="tails.png" HeightRequest="200" WidthRequest="200" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Image x:Name="topView"  Source="topview.png" HeightRequest="200" WidthRequest="200" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Image x:Name="headsView" Source="heads.png" HeightRequest="200" WidthRequest="200" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Image x:Name="tailsLbl" Source="tailstext.png"   VerticalOptions="Center" HorizontalOptions="Center"/>
+
+                    <Image x:Name="headsLbl" Source="headstext.png" VerticalOptions="Center" HorizontalOptions="Center" />
+
+
+
+
+                </Grid>
+               
+            </Grid>
+          
+
+        </VerticalStackLayout>
+        
+        <Button x:Name="coinFlipBtn" Text="Flip Coin" FontSize="20" TextColor="#d62323" VerticalOptions="End" HorizontalOptions="Center" Grid.Row="2" FontFamily="Racing" Clicked="coinFlipBtn_Clicked"  IsEnabled="True" Padding="24"/>
+    </Grid>
+   
+</ContentPage>
